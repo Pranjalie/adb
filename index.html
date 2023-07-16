@@ -1,0 +1,141 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ad Blocker Test</title>
+    <link rel="icon" href="icon.png">
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .dark {
+            background: #173145;
+            color: #efefef
+        }
+
+        .content {
+            max-width: 700px;
+            margin: auto;
+            padding: 10px;
+        }
+
+        .test {
+            background-color: transparent;
+            color: #fff;
+            padding: 5px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 60px;
+            margin: 10px;
+        }
+
+        .test>div {
+            position: relative;
+            user-select: none;
+            overflow-x: auto;
+            white-space: nowrap;
+            color: #000;
+            margin: 10px;
+            padding: 5px;
+        }
+
+
+
+        .test>span {
+            width: 100%;
+            display: block;
+        }
+    </style>
+
+</head>
+
+<body class="dark">
+    <div class="content">
+        <div id="test"></div>
+    </div>
+</body>
+
+<script>
+    var data = {
+        "Ads": {
+            "Google Ads": ["https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",
+                "https://pagead2.googlesyndication.com/pagead/show_ads.js",
+                "https://adservice.google.com/adsid/integrator.js?domain=localhost",
+                "https://www.google-analytics.com/analytics.js"
+            ],
+            "Media.net": ["https://static.media.net", "https://media.net", "https://adservetx.media.net"],
+            "Doubleclick.net": ["https://doubleclick.net/", "https://ad.doubleclick.net/"],
+            "FastClick": ["https://media.fastclick.net/", "https://cdn.fastclick.net/"]
+        },
+        "Analytics": {
+            "Google Analytics": "https://google-analytics.com",
+            "Hotjar": ["https://www.hotjar.com", "https://static.hotjar.com/c/hotjar.js?sv=6"],
+            "MouseFlow": ["https://mouseflow.com/", "https://a.mouseflow.com"],
+            "FreshMarketer": "https://freshmarketer.com/",
+            "Luckyorange": ["https://cdn.luckyorange.com", "https://w1.luckyorange.com", "https://upload.luckyorange.net", "https://cs.luckyorange.net", "https://settings.luckyorange.net"],
+            "Stats WP Plugin": "https://stats.wp.com/e-202020.js"
+        },
+        "Error Trackers": {
+            "Bugsnag": ["https://notify.bugsnag.com", "https://sessions.bugsnag.com"],
+            "Sentry": "https://browser.sentry-cdn.com/5.10.2/bundle.min.js"
+        },
+        "Social": {
+            "Facebook": ["https://pixel.facebook.com", "https://adtools.facebook.com", "https://analytics.facebook.com", "https://graph.facebook.com", "https://ads.facebook.com"],
+            "Twitter": ["https://ads-twitter.com", "https://static.ads-twitter.com", "https://analytics.twitter.com"],
+            "LinkedIn": ["https://ads.linkedin.com", "https://analytics.pointdrive.linkedin.com"],
+            "Pinterest": ["https://ads.pinterest.com", "https://log.pinterest.com", "https://widgets.pinterest.com", "https://analytics.pinterest.com", "https://trk.pinterest.com"],
+            "Reddit": ["https://ads.reddit", "https://stats.redditmedia.com", "https://rereddit.com", "https://events.redditmedia.com"],
+            "YouTube": ["https://ads.youtube.com", "https://youtube.cleverads.vn"]
+        }
+
+    };
+
+    function fetchAdLink(url, div) {
+        var hostDiv = document.createElement("div");
+        hostDiv.innerHTML = url;
+        div.appendChild(hostDiv);
+        fetch(url, {
+            method: 'HEAD',
+            mode: 'no-cors'
+        })
+            .then(response => {
+                hostDiv.style.backgroundColor = "ff3b3f";
+            })
+            .catch(error => {
+                hostDiv.style.backgroundColor = "3cc47c";
+            });
+    }
+    
+    window.onload = function () {
+        for (element in data) {
+            var category = document.createElement("div");
+            category.id = element;
+            category.innerHTML = "<h1>" + element + "</h1>";
+            document.getElementById("test").appendChild(category);
+            var category = data[element];
+            for (key in category) {
+                var div = document.createElement('div');
+                div.classList.add("test");
+                div.id = key;
+                div.innerHTML =  key;
+
+                document.getElementById(element).appendChild(div);
+                if (category.hasOwnProperty(key)) {
+                    var value = category[key];
+                    if (Array.isArray(value)) {
+                        var cnt = 0;
+                        for (let i = 0; i < value.length; i++)
+                            fetchAdLink(value[i], div);
+
+                    } else fetchAdLink(value, div);
+                }
+            }
+        }
+    }
+</script>
+</html>
