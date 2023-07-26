@@ -1,0 +1,157 @@
+html{
+    --green: #22C55E;
+    --red: #FF4132;
+    --bg: #f3f4f6;
+    --radius: .5rem;
+    --bga : #173145;
+}
+*,*::before,*::after {
+    box-sizing: border-box
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-flow: wrap column;
+    align-items: center;
+    justify-content: center;
+     background: var(--bga);
+     color: var(--bg);
+}
+
+body,html {
+    margin: 0;
+    padding: 0
+}
+
+section {
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column
+}
+
+main {
+    margin: auto;
+    width: 100%;
+    max-width: 60rem;
+    padding: 0 .5rem;
+}
+
+.grid {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+
+.row>[class*=col],.row>div,.grid>[class*=col],.grid>div {
+    flex: 0 0 auto;
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding: .5rem
+}
+
+.grid .col-12 {
+    width: 100%;
+}
+
+.card {
+    display:block;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.test>span {
+    border-radius: var(--radius);
+    position: relative;
+    min-height: 45px;
+    width: 100%
+}
+
+#test_log {
+    height: 200px;
+    overflow-y: auto;
+    flex-wrap: nowrap
+}
+
+.test_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem
+}
+
+.test_wrapper .col-12 {
+    gap: 1rem;
+    display: flex;
+    flex-direction: column
+}
+.test_wrapper>div>div>h5,.test_card>h5,.test>span {
+    text-align: center;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.test {
+    background-color: var(--red);
+    color: #000;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 10px;
+    min-height: 45px;
+    transition: all 1s;
+    background: #EEF0F4;
+}
+
+.test>div>div {
+    height: 45px;
+    width: 100%;
+    border-radius: 8px;
+    background: var(--bg);
+    color: var(--txt);
+    padding: .5rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.test>div>div>span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    text-align: center
+}
+
+.blocked{
+    background: red;
+}
+
+.test>div {
+    position: relative;
+    user-select: none;
+    display: none;
+    flex-direction: column;
+    overflow-x: auto;
+    gap: .5rem;
+    padding: .5rem;
+    width: 100%;
+    white-space: nowrap;
+    color: #000
+}
+
+.test.show>div {
+    display: flex
+}
+
+#adblockTestLog>span {
+    display: flex;
+    align-items: center;
+    gap: .5rem
+}
