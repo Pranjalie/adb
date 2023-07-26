@@ -245,7 +245,7 @@ var adblockVariables = {
     pagead: null,
     partnerads: null,
   },
-  hosts: {},
+  hosts: data,
 };
 const testWrapper = document.getElementById('test'); 
 
