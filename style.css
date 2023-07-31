@@ -1,9 +1,22 @@
 html{
     --green: #22C55E;
-    --red: #FF4132;
-    --bg: #f3f4f6;
+    --red: hsl(4, 100%, 60%);
+    --bg: #E4EBF5;
     --radius: .5rem;
-    --bga : #173145;
+    --bga : #E4EBF5;
+
+    --primary-light: #8abdff;
+  --primary: #6d5dfc;
+  --primary-dark: #5b0eeb;
+  
+  --white: #FFFFFF;
+  --greyLight-1: #E4EBF5;
+  --greyLight-2: #c8d0e7;
+  --greyLight-3: #bec8e4;
+  --greyDark: #9baacf;
+
+  --primary: #ff7025;
+	 --background: #e0e5ec;
 }
 *,*::before,*::after {
     box-sizing: border-box
@@ -15,7 +28,7 @@ body {
     flex-flow: wrap column;
     align-items: center;
     justify-content: center;
-     background: var(--bga);
+     background: #E4EBF5;
      color: var(--bg);
 }
 
@@ -93,7 +106,12 @@ main {
     justify-content: center;
     font-size: 1.5rem;
 }
-
+.center{
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    align-items: center;
+}
 .test {
     background-color: var(--red);
     color: #000;
@@ -126,7 +144,7 @@ main {
     overflow: hidden;
     text-overflow: ellipsis;
     width: 100%;
-    text-align: center
+    text-align: center;
 }
 
 .blocked{
@@ -143,15 +161,97 @@ main {
     padding: .5rem;
     width: 100%;
     white-space: nowrap;
-    color: #000
+    color: #000;
 }
 
 .test.show>div {
-    display: flex
+    display: flex;
 }
 
 #adblockTestLog>span {
     display: flex;
     align-items: center;
     gap: .5rem
+}
+
+.adCategory {
+    color: #222;
+    font-size: 3rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.adHostLinks {
+    font-size: 2rem;
+}
+
+.test {
+  padding: 1rem 1.5rem;
+	 border-radius: 1.2rem;
+	 background: #e0e5ec;
+	 cursor: default;
+	 user-select: none;
+	 max-width: 100%;
+     box-shadow: inset 0.2rem 0.2rem 0.5rem rgba(195, 193, 198, 0.9), inset -0.2rem -0.2rem 0.5rem #fff, 0.3rem 0.3rem 0.5rem rgba(195, 193, 198, 0.9), -0.2rem -0.2rem 0.4rem #fff;
+}
+
+.blockedRed, .blockedGreen {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+  justify-self: center;
+  border-radius: 1rem;
+  box-shadow: .3rem .3rem .6rem var(--greyLight-2), 
+-.2rem -.2rem .5rem var(--white);;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.blockedRed span, .blockedGreen span {
+     font-size: 1.3rem;
+    margin-left: -1.8rem;
+    font-weight: bold;
+}
+
+.blockedGreen{
+    background: #007A00 !important;
+    color: #fff !important;
+    border-radius: 20px;
+  -webkit-box-shadow: inset 6px 6px 9px #3F4A3C, inset -6px -6px 9px #81A575;
+  box-shadow: inset 6px 6px 9px #3F4A3C, inset -6px -6px 9px #81A575;
+}
+.blockedRed {
+    background: #cf000f !important;
+    color: #fff !important;
+  border-radius: 20px;
+  -webkit-box-shadow: inset 6px 6px 9px #B93B00, inset -6px -6px 9px #FD4D59;
+  box-shadow: inset 6px 6px 9px #B93B00, inset -6px -6px 9px #FD4D59;
+}
+ 
+
+.card {
+   padding: 1rem 1.5rem;
+	 border-radius: 1.2rem;
+	 background: #e0e5ec;
+	 cursor: default;
+	 user-select: none;
+	 max-width: 100%;
+     box-shadow: 0.3rem 0.3rem 0.5rem rgba(195, 193, 198, 0.9), -0.2rem -0.2rem 0.4rem #fff;
+}
+
+.card h1, h3 {
+    text-align: center;
+    color: #222;
+}
+
+.card h3 {
+    text-align: left;
+}
+
+#tick, #cross {
+    padding-top: 12px;
+}
+
+#loadingGif{
+    width: 100%;
 }
