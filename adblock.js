@@ -334,24 +334,26 @@ async function testAdHostUrls(url, div, parent) {
   }, 8000);
   adblockVariables.total += 1;
   var adblockHostDiv = document.createElement('div');
+  adblockHostDiv.classList.add('adblockHostDiv');
+  adblockHostDiv.style.color = "grey";
+  adblockHostDiv.innerHTML = '<span>' + url + '</span>';
   div.appendChild(adblockHostDiv);
   try {
     await fetch('https://' + url, config, timeout, parent, div)
       .then((response) => {
-        if (response.type == 'basic' && response.status == 200) {
-          adblockHostDiv.innerHTML = '<span>' +  url + '</span>';
-          adblockVariables.blocked += 1;
-        } else {
-          adblockHostDiv.classList.add('blockedRed');
-          adblockHostDiv.innerHTML = '<span>' + url + '</span>';
-          adblockVariables.notblocked += 1;
-        }
+          if (response.type == 'basic' && response.status == 200) {
+              adblockHostDiv.classList.add('blockedRed'); 
+            adblockVariables.blocked += 1;
+          } else {
+              adblockHostDiv.classList.add('blockedRed'); 
+            adblockVariables.notblocked += 1;
+          }
       })
       .catch((error) => {
-        adblockHostDiv.classList.add('blockedGreen');
-        adblockHostDiv.innerHTML = '<span>' + url + '</span>';
-        adblockVariables.blocked += 1;
+            adblockHostDiv.classList.add('blockedGreen');
+          adblockVariables.blocked += 1;
       });
+
   } catch (error) {
     console.log(error);
   }
@@ -361,7 +363,7 @@ async function runAdblockTest() {
   let fetches = [];
   Object.keys(data).forEach((key) => {
     if (key == 'default') return;
-    var categoryLinks = document.createElement('div');
+    var categoryLinks = document.createElement('div')
     categoryLinks.className = 'grid';
     categoryLinks.id = key;
     categoryLinks.innerHTML =
@@ -446,6 +448,26 @@ document.addEventListener('DOMContentLoaded', function () {
         icons.y +
         adblockVariables.notblocked +
         ' Unblocked </h3>';
+        var red = document.getElementsByClassName('blockedRed');
+        for (var i = 0; i < red.length; i++) {
+          red[i].style.backgroundColor = '#cf000f';
+          red[i].style.color = '#fff';
+          red[i].style.boxShadow =
+            'inset 6px 6px 9px #B93B00, inset -6px -6px 9px #FD4D59';
+          red[i].style.webkitBoxShadow =
+            'inset 6px 6px 9px #B93B00, inset -6px -6px 9px #FD4D59';
+        }
+        var green = document.getElementsByClassName('blockedGreen');
+        for (var i = 0; i < green.length; i++) {
+          green[i].style.backgroundColor = '#007A00';
+          green[i].style.color = '#fff';
+          green[i].style.boxShadow =
+            'inset 6px 6px 9px #3F4A3C, inset -6px -6px 9px #81A575;';
+          green[i].style.webkitBoxShadow =
+            'inset 6px 6px 9px #3F4A3C, inset -6px -6px 9px #81A575;';
+        }
+
+        adblockTestLog.style.display = 'block';
     }, 2000);
   });
 });
