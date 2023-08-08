@@ -4,26 +4,32 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="./style.css">
-	<title>Document</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		
+	<title>Adblocker Testing</title>
 </head>
 <body>
 		<main>
 			<section>
-				<div class="grid" style="flex: 0 10 0">
-					<div class="center">
-							<div class="card" id="adblockTestLog"></div>
-					</div>
-						</div>
+				<div class="center">
+				<h1 class="heading"> <span class="greenText"> check </span> your <span class="greenText"> ad block </span> status instantly </h1>
+			</div>
+			<div id="loader" class="center">
+			</div>
+				<div class="center">
+						<div class="retryBtn" id="retest"><i class="fa-solid fa-rotate-right fa-flip-horizontal fa-lg" style="color: #ffffff;"></i></div>
+						<div class="percentageBtn"><span id="percentage"></span></div>
+				</div>
+				<div class="center">
+					<div class="adblockStat" id="adblockTestLog">
+				</div>
 				</div>
 			</section>
 			<section>
 				<div class="grid">
-					<div>
 						<div id="test" class="test_wrapper"></div>
-					</div>
 				</div>
 			</section>
-			</div>
 		</main>
   <script src="./adblock.js"></script>
 </body>
