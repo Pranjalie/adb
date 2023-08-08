@@ -1,23 +1,11 @@
-html{
-    --green: #22C55E;
-    --red: hsl(4, 100%, 60%);
-    --bg: #E4EBF5;
-    --radius: .5rem;
-    --bga : #E4EBF5;
-
-    --primary-light: #8abdff;
-  --primary: #6d5dfc;
-  --primary-dark: #5b0eeb;
-  
-  --white: #FFFFFF;
-  --greyLight-1: #E4EBF5;
-  --greyLight-2: #c8d0e7;
-  --greyLight-3: #bec8e4;
-  --greyDark: #9baacf;
-
-  --primary: #ff7025;
-	 --background: #e0e5ec;
+:root{
+  --bodyBackground : #252424;
+  --greenColor : #33B175;
+  --redColor : #A00E0E;
+  --whiteColor : #FFFFFF;
+  --divBg : #312D2D;
 }
+
 *,*::before,*::after {
     box-sizing: border-box
 }
@@ -28,8 +16,8 @@ body {
     flex-flow: wrap column;
     align-items: center;
     justify-content: center;
-     background: #E4EBF5;
-     color: var(--bg);
+    background: var(--bodyBackground);
+    color: var(--whiteColor);
 }
 
 body,html {
@@ -68,54 +56,99 @@ main {
     width: 100%;
 }
 
-.card {
-    display:block;
-    gap: 1rem;
-    padding: 1rem;
-}
-
-.test>span {
-    border-radius: var(--radius);
-    position: relative;
-    min-height: 45px;
-    width: 100%
-}
-
-#test_log {
-    height: 200px;
-    overflow-y: auto;
-    flex-wrap: nowrap
-}
-
-.test_wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem
-}
-
-.test_wrapper .col-12 {
-    gap: 1rem;
-    display: flex;
-    flex-direction: column
-}
-.test_wrapper>div>div>h5,.test_card>h5,.test>span {
-    text-align: center;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-}
 .center{
     display: flex;
     flex-flow: wrap;
     justify-content: center;
     align-items: center;
 }
+
+.heading {
+ font-size: 3.5rem;
+ text-transform: uppercase;
+ text-align: center;
+ line-height: 5rem;
+ letter-spacing: 0.2rem;
+ word-spacing: 0.6rem;
+}
+
+.greenText {
+ color: var(--greenColor);
+}
+
+.retryBtn svg{
+ border: 1px solid var(--greenColor);
+}
+
+.fa-rotate-right{
+ padding: 1rem 0.5rem;
+ border: 2px solid var(--greenColor);
+ border-radius: 100%;
+ cursor: pointer;
+}
+
+#percentage{
+ font-size: 1em;
+ margin-left: 1rem;
+ border: 2px solid var(--greenColor);
+ border-radius: 30px;
+ padding: 0.5rem 1rem;
+ font-weight: bold;
+ text-align: center;
+}
+
+.adblockStat {
+    margin-top: 5%;
+    border: 2px solid var(--greenColor);
+    border-radius: 30px;
+    padding: 2rem 3rem;
+}
+
+.adblockStat h3 {
+ color: var(--whiteColor);
+ margin: 0 2rem !important;
+ text-transform: capitalize;
+ letter-spacing: 0.1rem;
+}
+
+.adblockStat h1 {
+ text-align: center !important;
+ margin-top: 0;
+ color: var(--whiteColor);
+ text-transform: capitalize;
+ letter-spacing: 0.1rem;
+}
+
+.d-flex {
+ display: flex;
+}
+
+.d-inline {
+ display: flex;
+ display: inline;
+}
+
+.fa-circle-check {
+ color: var(--whiteColor);
+ background: var(--greenColor);
+ border-radius: 100%;
+}
+
+.fa-circle-xmark {
+ color:var(--whiteColor);
+ background: var(--redColor);
+ border-radius: 100%;
+}
+
+.adCategory {
+    color: var(--whiteColor);
+    font-size: 3rem;
+    text-align: center;
+}
+
 .test {
-    background-color: var(--red);
-    color: #000;
-    border-radius: 8px;
+    background: var(--divBg);
+    border-radius: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -124,15 +157,35 @@ main {
     margin: 10px;
     min-height: 45px;
     transition: all 1s;
-    background: #EEF0F4;
+    font-size: 3rem;
+    color: var(--whiteColor);
+    padding: 1rem 1.5rem;
+	 border-radius: 1.2rem;
+	 cursor: default;
+	 user-select: none;
+	 max-width: 100%;
+}
+
+.test.show>div {
+    display: flex;
+}
+
+.test>div {
+    position: relative;
+    user-select: none;
+    display: none;
+    flex-direction: column;
+    overflow-x: auto;
+    gap: .5rem;
+    padding: .5rem;
+    width: 100%;
+    white-space: nowrap;
 }
 
 .test>div>div {
     height: 45px;
     width: 100%;
     border-radius: 8px;
-    background: var(--bg);
-    color: var(--txt);
     padding: .5rem;
     display: flex;
     align-items: center;
@@ -147,51 +200,6 @@ main {
     text-align: center;
 }
 
-
-.test>div {
-    position: relative;
-    user-select: none;
-    display: none;
-    flex-direction: column;
-    overflow-x: auto;
-    gap: .5rem;
-    padding: .5rem;
-    width: 100%;
-    white-space: nowrap;
-    color: #000;
-}
-
-.test.show>div {
-    display: flex;
-}
-
-#adblockTestLog>span {
-    display: flex;
-    align-items: center;
-    gap: .5rem
-}
-
-.adCategory {
-    color: #222;
-    font-size: 3rem;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.adHostLinks {
-    font-size: 2rem;
-}
-
-.test {
-  padding: 1rem 1.5rem;
-	 border-radius: 1.2rem;
-	 background: #e0e5ec;
-	 cursor: default;
-	 user-select: none;
-	 max-width: 100%;
-     box-shadow: inset 0.2rem 0.2rem 0.5rem rgba(195, 193, 198, 0.9), inset -0.2rem -0.2rem 0.5rem #fff, 0.3rem 0.3rem 0.5rem rgba(195, 193, 198, 0.9), -0.2rem -0.2rem 0.4rem #fff;
-}
-
 .adblockHostDiv {
   font-size: 1.3rem;
   font-weight: bold;
@@ -202,35 +210,19 @@ main {
   grid-row: 3 / 4;
   justify-self: center;
   border-radius: 1rem;
-  box-shadow: .3rem .3rem .6rem var(--greyLight-2), -.2rem -.2rem .5rem var(--white);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.card {
-   padding: 1rem 1.5rem;
-	 border-radius: 1.2rem;
-	 background: #e0e5ec;
-	 cursor: default;
-	 user-select: none;
-	 max-width: 100%;
-     box-shadow: 0.3rem 0.3rem 0.5rem rgba(195, 193, 198, 0.9), -0.2rem -0.2rem 0.4rem #fff;
+.adblockHostDiv:first-child {
+    margin-top: 2rem;
 }
 
-.card h1, h3 {
-    text-align: center;
-    color: #222;
+#loader svg {
+    margin-bottom: 3rem;
 }
 
-.card h3 {
-    text-align: left;
-}
-
-#tick, #cross {
-    padding-top: 12px;
-}
-
-#adblockTestLog {
+.adblockStat {
     display: none;
 }
