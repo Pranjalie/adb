@@ -264,7 +264,7 @@
     const config = {
       ...{
         method: 'HEAD',
-        mode: 'no-cors',
+        mode: 'cors',
       },
       signal: controller.signal,
     };
@@ -284,22 +284,16 @@
           if (response.status !== 200) {
             adblockHostDiv.classList.add('blockedGreen');
             adblockVariables.blocked += 1;
-            adblockHostDiv.innerHTML = response.status + ' || 123';
-          } else if (
-            response === null ||
-            response === undefined ||
-            response === '' ||
-            (typeof response === 'object' && Object.keys(response).length === 0)
-          ) {
+            console.log(response.status, 'block');
+          } else {
             adblockHostDiv.classList.add('blockedRed');
             adblockVariables.notblocked += 1;
-            adblockHostDiv.innerHTML = response.status + " || 456"
+            console.log(response.status, 'unblock');
           }
         })
         .catch((error) => {
           adblockHostDiv.classList.add('blockedGreen');
           adblockVariables.blocked += 1;
-          adblockHostDiv.innerHTML = response.status + ' || 000';
         });
     } catch (error) {
       console.log(error, 'error');
